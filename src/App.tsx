@@ -1,5 +1,6 @@
 
 import './App.css'
+import Login from './component/Login/Login'
 
 function App() {
  
@@ -7,7 +8,8 @@ function App() {
   return (
     <>
       <div>
-        <h1 className='font-semibold text-teal-500'>Ecommerce-website</h1>
+        {/* <h1 className='font-semibold text-teal-500'>Ecommerce-website</h1> */}
+        <Login/>
       </div>
       
      
