@@ -1,6 +1,6 @@
 // import React from 'react'
 // import img from '../images/pic1.jpg';
-import { Checkbox } from "@material-tailwind/react";
+
 const Login = () => {
   return (
     <div className="flex w-100 gap-3">
