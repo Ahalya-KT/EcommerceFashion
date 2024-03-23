@@ -1,11 +1,11 @@
 // import React from 'react'
 import imgSrc from "../images/pic1.jpg";
+import { Checkbox } from "@material-tailwind/react";
 
 const Login = () => {
   return (
     <div className="flex w-screen gap-3">
-      {/* div1 form */}
-      <div className="w-1/2 py-32 px-24">
+      <div className="w-1/2 py-32 px-48">
         <p className="font-bold text-lg text-start">Welcome back!</p>
         <p className="text-start">
           {" "}
@@ -15,13 +15,12 @@ const Login = () => {
         {/* fields of form */}
 
         <form>
-          {/* email address */}
-          <div className="my-14">
+          <div className="my-14 ">
             <label className="block text-gray-700 text-sm font-bold mb-2 text-start">
               Email Address
             </label>
             <input
-              className="shadow  appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow  appearance-none border rounded w-96 py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
               placeholder="Enter Your Email Address"
@@ -33,28 +32,36 @@ const Login = () => {
               PassWord
             </label>
             <input
-              className="shadow appearance-none border rounded  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded  w-96 py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
               placeholder="Enter Your Password"
             />
+            <div>
+              <Checkbox
+                label="Remember for 30 days"
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+                crossOrigin={undefined}
+              />
+            </div>
 
-            <button className="my-7 w-full bg-green-700 p-2 text-white rounded-xl">
+            <button className="my-7 w-96 bg-green-700 p-2 text-white rounded-xl">
               Login
             </button>
-            <p>or</p>
-            <p>
-              Don’t have an account?{" "}
-              <span className="text-blue-700">
-                <a href="">Sign Up</a>
-              </span>
-            </p>
-            {/* <Checkbox label="Remember Me" /> */}
+            <div className="text-center">
+              <p>or</p>
+              <p>
+                Don’t have an account?{" "}
+                <span className="text-blue-700">
+                  <a href="">Sign Up</a>
+                </span>
+              </p>
+            </div>
           </div>
         </form>
       </div>
 
-      {/* div2 */}
       <div className="w-1/2 ">
         <img
           src={imgSrc}

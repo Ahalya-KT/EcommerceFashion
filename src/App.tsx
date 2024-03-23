@@ -1,18 +1,29 @@
 
+// import { Switch } from '@material-tailwind/react'
 import './App.css'
 import Login from './Page/Login'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import SignUp from './Page/SignUp'
+
+
 
 
 function App() {
- 
+   
 
   return (
     <>
-      <div>
-        {/* <h1 className='font-semibold text-teal-500'>Ecommerce-website</h1> */}
-        <Login/>
-        {/* <SignUp/> */}
-      </div>
+
+    <div>
+      <BrowserRouter>
+      <Routes>
+       <Route index element={<Login/>} />
+       <Route index element={<SignUp/>} />
+      </Routes>
+      </BrowserRouter>
+    </div>
+    
+    
       
      
     </>
