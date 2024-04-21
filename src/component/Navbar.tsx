@@ -14,7 +14,7 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <div className=" w-full bg-white">
+    <div className=" w-full ">
       <div className="md:px-10 py-6 px-7 md:flex fixed top-0 left-0 w-full ">
         <div className="flex text-2xl cursor-pointer items-center gap-1">
           <GiLargeDress className="w-7 h-7 text-pink-200" />
@@ -31,7 +31,7 @@ const Navbar = () => {
         {/* nav link */}
         <div className="flex ">
           <ul
-            className={`md:flex pl-9 md:pl-0 md:items-center bg-white md:static md:pb-0 pb-12 absolute w-full transition-all duration-500 ease-in ${
+            className={`md:flex pl-9 md:pl-0 md:items-center  md:static md:pb-0 pb-12 absolute w-full transition-all duration-500 ease-in ${
               isOpen ? "top-16" : "top-[-490px] " 
             }`}
           >
