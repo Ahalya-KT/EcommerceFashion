@@ -1,4 +1,3 @@
-
 import Navbar from "../component/Navbar";
 import img1 from "../images/img_1.png";
 import Cards from "../component/Cards";
@@ -33,69 +32,72 @@ const Home = () => {
         <p className="font-bold text-3xl">Discover NEW Arrivals</p>
         <p className="">Recently added shirts!</p>
       </div>
-        {/* card */}
-        <Cards/>
+      {/* card */}
+      <Cards />
 
-        {/* section4 */}
-        
-        <div className="py-24 px-16 flex gap-32 text-center justify-center">
-          <div className="flex gap-4">
+      {/* section4 */}
 
-            <div>
+      <div className="py-24 px-16 flex gap-32 text-center justify-center">
+        <div className="flex gap-4">
+          <div>
             <FaShippingFast size={20} color="blue" />
-            </div>
-
-            <div>
-              <p className="font-bold">Free Shipping</p>
-              <p className="w-52">Enjoy free shipping on all orders above $100</p>
-            </div>
           </div>
 
-          <div className="flex gap-4">
-            <div>
-            <MdOutlineSupport size={20} color="blue" />
-            </div>
-
-            <div>
-              <p className="font-bold">SUPPORT 24/7</p>
-              <p className="w-52">Our support team is there to help you for queries</p>
-            </div>
-          </div>
-
-          <div className="flex gap-4">
-
-            <div>
-            <TbBrandDaysCounter size={20} color="blue"/>
-          </div>
-
-            <div>
-              <p className="font-bold">30 DAYS RETURN</p>
-              <p className="w-52">Simply return it within 30 days for an exchange.</p>
-            </div>
-          </div>
-           <div className="flex gap-4">
-            <div>
-            <FaFingerprint  size={20} color="blue" />
-            </div>
-            <div>
-              <p className="font-bold">100% PAYMENT SECURE</p>
-              <p className="w-52">Our payments are secured with 256 bit encryption</p>
-            </div>
+          <div>
+            <p className="font-bold">Free Shipping</p>
+            <p className="w-52">Enjoy free shipping on all orders above $100</p>
           </div>
         </div>
 
-        {/* section5 */}
-        <BuyNow/>
+        <div className="flex gap-4">
+          <div>
+            <MdOutlineSupport size={20} color="blue" />
+          </div>
 
-        {/* section6 */}
-        <div className="text-center">
+          <div>
+            <p className="font-bold">SUPPORT 24/7</p>
+            <p className="w-52">
+              Our support team is there to help you for queries
+            </p>
+          </div>
+        </div>
+
+        <div className="flex gap-4">
+          <div>
+            <TbBrandDaysCounter size={20} color="blue" />
+          </div>
+
+          <div>
+            <p className="font-bold">30 DAYS RETURN</p>
+            <p className="w-52">
+              Simply return it within 30 days for an exchange.
+            </p>
+          </div>
+        </div>
+        <div className="flex gap-4">
+          <div>
+            <FaFingerprint size={20} color="blue" />
+          </div>
+          <div>
+            <p className="font-bold">100% PAYMENT SECURE</p>
+            <p className="w-52">
+              Our payments are secured with 256 bit encryption
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* section5 */}
+      <BuyNow />
+
+      {/* section6 */}
+      <div className="text-center">
         <p className="font-bold text-2xl">Top Sellers</p>
         <p className="text-gray-600">Browse our top-selling products</p>
       </div>
-      <Cards/>
+      <Cards />
 
-      <Footer/>
-
+      <Footer />
     </div>
   );
 };
