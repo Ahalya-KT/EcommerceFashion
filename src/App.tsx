@@ -4,11 +4,13 @@ import SignUp from "./Page/SignUp";
 import Home from "./Page/Home";
 import About from "./Page/About";
 import Contact from "./Page/Contact";
+import Navbar from "./component/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Navbar />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />

@@ -13,8 +13,8 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <div className=" w-full">
-      <div className="md:px-10 py-6 px-7 md:flex fixed top-0 left-0 w-full justify-between ">
+    <div className=" w-full bg-white fixed top-0 left-0 z-50">
+      <div className="container mx-auto px-6 md:px-10 py-6 flex justify-between items-center">
         <div className="flex text-2xl cursor-pointer items-center gap-1">
           <GiLargeDress className="w-7 h-7 text-pink-200" />
           <span className="font-bold">NorthStar</span>
