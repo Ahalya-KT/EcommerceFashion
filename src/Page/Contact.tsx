@@ -18,7 +18,7 @@ function Contact() {
       </div>
 
       {/* form */}
-      <div className="flex gap-14">
+      <div className="flex gap-40">
         <div className="px-9">
           <p className="font-semibold text-3xl">
             We would love to hear from you.
@@ -28,7 +28,44 @@ function Contact() {
             here. We would love to hear from you.
           </p>
 
-          <form></form>
+          <form>
+            <div className="flex gap-8">
+              <div className="flex flex-col">
+                <div className="mt-2">
+                  <label className="text-xs">Name</label>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col">
+                <div className="mt-2">
+                  <label className="text-xs">Email</label>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6">
+              <label className="text-xs">message</label>
+            </div>
+            <div>
+              <textarea
+                name=""
+                id=""
+                className="border-2 border-gray-300 mt-3 w-full p-7"
+              />
+            </div>
+          </form>
         </div>
 
         {/* section1.2 */}
@@ -53,7 +90,7 @@ function Contact() {
         </div>
       </div>
 
-      <div>
+      <div className="mt-20">
         <Footer />
       </div>
     </div>
