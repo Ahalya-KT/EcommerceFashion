@@ -3,6 +3,7 @@ import { IoIosMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../images/logo.png";
 
 const Navbar = () => {
   let Links = [
@@ -15,8 +16,9 @@ const Navbar = () => {
   return (
     <div className=" w-full bg-white fixed top-0 left-0 z-50">
       <div className="container mx-auto px-6 md:px-10 py-6 flex justify-between items-center">
-        <div className="flex text-2xl cursor-pointer items-center gap-1">
-          <GiLargeDress className="w-7 h-7 text-pink-200" />
+        <div className="flex text-2xl cursor-pointer items-center">
+          {/* <GiLargeDress className="w-7 h-7 text-pink-200" /> */}
+          <img src={logo} width={60} />
           <span className="font-bold">NorthStar</span>
         </div>
         {/* menu icon */}
