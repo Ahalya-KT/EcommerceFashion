@@ -1,4 +1,3 @@
-import { GiLargeDress } from "react-icons/gi";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
