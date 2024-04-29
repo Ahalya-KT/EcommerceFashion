@@ -1,4 +1,7 @@
 import addCart from "../images/Addcart.png";
+import { CiHeart } from "react-icons/ci";
+import { CiShoppingCart } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 function AddToCart() {
   return (
@@ -7,10 +10,22 @@ function AddToCart() {
         <img src={addCart} className="w-96" />
       </div>
 
-      <div className=" py-10">
-        <p className="text-xs text-blue-gray-300">
-          HOME/SHOP/WOMEN/<span className="text-black font-semibold">SHOP</span>
-        </p>
+      <div className=" py-10 ">
+        <div className="flex justify-between">
+          <p className="text-xs text-blue-gray-300">
+            HOME/SHOP/WOMEN/
+            <span className="text-black font-semibold">SHOP</span>
+          </p>
+
+          <div className="flex gap-1">
+            {/* <CiHeart size={25} className="cursor-pointer" /> */}
+            <Link to="/Wishlist">
+              <CiHeart size={25} className="cursor-pointer" />
+            </Link>
+            <CiShoppingCart size={25} className="cursor-pointer" />
+          </div>
+        </div>
+
         <p className="text-2xl py-3 font-semibold">plain White Shirt</p>
         <p className="py-2 text-2xl text-light-blue-900">$59.00</p>
         <p className="py-2 text-brown-300">

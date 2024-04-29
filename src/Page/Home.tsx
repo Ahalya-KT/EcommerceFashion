@@ -6,7 +6,6 @@ import { MdOutlineSupport } from "react-icons/md";
 import { TbBrandDaysCounter } from "react-icons/tb";
 import { FaFingerprint } from "react-icons/fa";
 import BuyNow from "./BuyNow";
-import Footer from "../component/Footer";
 
 const Home = () => {
   return (
@@ -96,8 +95,6 @@ const Home = () => {
         <p className="text-gray-600">Browse our top-selling products</p>
       </div>
       <Cards />
-
-      <Footer />
     </div>
   );
 };

@@ -8,7 +8,7 @@ const Navbar = () => {
   let Links = [
     { name: "HOME", link: "/" },
     { name: "ABOUT", link: "/about" },
-    { name: "CONTACT US", link: "/" },
+    { name: "CONTACT US", link: "/contactUs" },
   ];
   const [isOpen, setOpen] = useState(false);
 
@@ -37,13 +37,13 @@ const Navbar = () => {
           >
             {Links.map((link) => (
               <li className="my-7 md:my-0 md:ml-12 ml-3 text-sm font-semibold  ">
-                <a href="/about">{link.name}</a>
+                <Link to={link.link}>{link.name}</Link>
               </li>
             ))}
           </ul>
         </div>
         <div className="flex gap-6 font-bold">
-          <Link to="login" className="cursor-pointer">
+          <Link to="/login" className="cursor-pointer">
             Login
           </Link>
           {/* <p className="cursor-pointer">Sign Up</p> */}

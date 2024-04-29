@@ -1,4 +1,3 @@
-import Footer from "../component/Footer";
 import Navbar from "../component/Navbar";
 import pics from "../images/pic19.jpg";
 import pics1 from "../images/pic21.png";
@@ -125,9 +124,6 @@ function About() {
         </div>
       </div>
       {/* footer */}
-      <div className="my-6">
-        <Footer />
-      </div>
     </div>
   );
 }

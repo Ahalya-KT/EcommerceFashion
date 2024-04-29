@@ -1,4 +1,3 @@
-import Footer from "../component/Footer";
 import Navbar from "../component/Navbar";
 import picContact from "../images/contact.jpg";
 
@@ -88,10 +87,6 @@ function Contact() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="mt-20">
-        <Footer />
       </div>
     </div>
   );

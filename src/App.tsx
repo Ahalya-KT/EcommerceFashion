@@ -8,6 +8,7 @@ import Navbar from "./component/Navbar";
 import AddToCart from "./Page/AddToCart";
 import Footer from "./component/Footer";
 import Cart from "./Page/Cart";
+import WishList from "./Page/WishList";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/contactUs" element={<Contact />} />
         <Route path="/AddToCart" element={<AddToCart />} />
         <Route path="/Cart" element={<Cart />} />
+        <Route path="/Wishlist" element={<WishList />} />
       </Routes>
       <Footer />
     </BrowserRouter>
