@@ -6,6 +6,8 @@ import About from "./Page/About";
 import Contact from "./Page/Contact";
 import Navbar from "./component/Navbar";
 import AddToCart from "./Page/AddToCart";
+import Footer from "./component/Footer";
+import Cart from "./Page/Cart";
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contactUs" element={<Contact />} />
         <Route path="/AddToCart" element={<AddToCart />} />
+        <Route path="/Cart" element={<Cart />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
