@@ -9,6 +9,8 @@ import AddToCart from "./Page/AddToCart";
 import Footer from "./component/Footer";
 import Cart from "./Page/Cart";
 import WishList from "./Page/WishList";
+import CheckOut from "./Page/CheckOut";
+import OrderConfrim from "./Page/OrderConfrim";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/AddToCart" element={<AddToCart />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Wishlist" element={<WishList />} />
+        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/orderConfrim" element={<OrderConfrim />} />
       </Routes>
       <Footer />
     </BrowserRouter>

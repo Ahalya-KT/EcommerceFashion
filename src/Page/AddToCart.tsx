@@ -49,7 +49,7 @@ function AddToCart() {
         </div>
 
         <button className="bg-blue-900 p-3 text-white font-semibold text-xs">
-          ADD TO CART
+          <Link to={"/Cart"}> ADD TO CART</Link>
         </button>
       </div>
     </div>

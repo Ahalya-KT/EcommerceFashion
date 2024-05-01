@@ -29,15 +29,19 @@ function Contact() {
 
           <form>
             <div className="flex gap-8">
-              <div className="flex flex-col">
-                <div className="mt-2">
-                  <label className="text-xs">Name</label>
-                </div>
+              <div className="flex flex-row">
                 <div>
-                  <input
-                    type="text"
-                    className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
-                  />
+                  <div className="mt-2">
+                    <label className="text-xs">Name</label>
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
+                    />
+                  </div>
+
+                  <div></div>
                 </div>
               </div>
 

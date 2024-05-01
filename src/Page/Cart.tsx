@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const TABLE_HEAD = ["", "Product", "Price", "Quantity", "Total"];
 
 const TABLE_ROWS = [
@@ -75,7 +77,7 @@ function Cart() {
           </div>
         </div>
         <button className=" text-xs bg-orange-800 text-white p-3 my-14 mx-10">
-          PROCEED TO CHECKOUT
+          <Link to="/checkout">PROCEED TO CHECKOUT</Link>
         </button>
       </div>
     </div>
