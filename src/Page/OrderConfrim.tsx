@@ -1,5 +1,6 @@
 import { TiTick } from "react-icons/ti";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function OrderConfrim() {
   return (
@@ -21,7 +22,10 @@ function OrderConfrim() {
           <div className="py-6">
             <p>Order ID</p>
             <div className="flex items-center justify-center text-center gap-1 text-light-blue-800">
-              <p className="">View Details</p>
+              <Link to={"/orderDetails"}>
+                <p className="cursor-pointer">View Details</p>
+              </Link>
+
               <FaArrowRightLong />
             </div>
           </div>
