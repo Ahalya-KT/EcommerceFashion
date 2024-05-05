@@ -5,7 +5,6 @@ import Home from "./Page/Home";
 import About from "./Page/About";
 import Contact from "./Page/Contact";
 import Navbar from "./component/Navbar";
-import AddToCart from "./Page/AddToCart";
 import Footer from "./component/Footer";
 import Cart from "./Page/Cart";
 import WishList from "./Page/WishList";
@@ -13,6 +12,7 @@ import CheckOut from "./Page/CheckOut";
 import OrderConfrim from "./Page/OrderConfrim";
 import OrderDetails from "./Page/OrderDetails";
 import OrderHistory from "./Page/OrderHistory";
+import ProductDetails from "./Page/ProductDetails";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/about" element={<About />} />
         <Route path="/contactUs" element={<Contact />} />
-        <Route path="/AddToCart" element={<AddToCart />} />
+        <Route path="/AddToCart" element={<ProductDetails />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Wishlist" element={<WishList />} />
         <Route path="/checkout" element={<CheckOut />} />
