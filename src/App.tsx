@@ -13,6 +13,7 @@ import OrderConfrim from "./Page/OrderConfrim";
 import OrderDetails from "./Page/OrderDetails";
 import OrderHistory from "./Page/OrderHistory";
 import ProductDetails from "./Page/ProductDetails";
+import Setting from "./Page/Setting";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/orderConfrim" element={<OrderConfrim />} />
         <Route path="/orderDetails" element={<OrderDetails />} />
         <Route path="/orderHistory" element={<OrderHistory />} />
+        <Route path="/Setting" element={<Setting />} />
       </Routes>
       <Footer />
     </BrowserRouter>
