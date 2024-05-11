@@ -2,7 +2,7 @@
 import imgSrc from "../images/pic1.jpg";
 import { Checkbox } from "@material-tailwind/react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { login } from "../Redux/Slice/UserSlice";
 import { useNavigate } from "react-router-dom";
