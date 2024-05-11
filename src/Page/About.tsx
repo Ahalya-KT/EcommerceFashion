@@ -1,3 +1,4 @@
+import Counter from "../component/Counter";
 import Navbar from "../component/Navbar";
 import pics from "../images/pic19.jpg";
 import pics1 from "../images/pic21.png";
@@ -124,6 +125,8 @@ function About() {
         </div>
       </div>
       {/* footer */}
+
+      <Counter />
     </div>
   );
 }

@@ -24,7 +24,7 @@ function OrderDetails() {
   return (
     <div className="py-40 px-16">
       <div className="flex justify-between my-7 mx-[7rem] relative">
-        <div className="absolute w-[1130px] bg-light-blue-200 h-[6px] bg-opacity-30 top-5 p-2"></div>
+        <div className="absolute w-[1120px] bg-light-blue-200 h-[6px] bg-opacity-30 top-5 mx-3"></div>
         <div>
           <Radio
             name="type"

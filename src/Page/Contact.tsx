@@ -17,8 +17,8 @@ function Contact() {
       </div>
 
       {/* form */}
-      <div className="flex gap-40">
-        <div className="px-9">
+      <div className="flex gap-40 ">
+        <div className="px-9 m-10">
           <p className="font-semibold text-3xl">
             We would love to hear from you.
           </p>
