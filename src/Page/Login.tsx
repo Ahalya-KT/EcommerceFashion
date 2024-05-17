@@ -2,10 +2,12 @@
 import imgSrc from "../images/pic1.jpg";
 import { Checkbox } from "@material-tailwind/react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { login } from "../Redux/Slice/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../Redux/store";
+import { useEffect } from "react";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required(" email is Required"),
@@ -15,6 +17,14 @@ const loginSchema = Yup.object().shape({
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // to avoid the navigation to login page
+  const { user } = useSelector((state: RootState) => state.user);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className="flex w-screen gap-3">

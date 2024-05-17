@@ -83,12 +83,17 @@ const Navbar = () => {
         {user && (
           <div className="flex gap-5 ">
             <button>
-              <CiHome size={25} />
+              <Link to={"/"}>
+                <CiHome size={25} />
+              </Link>
             </button>
 
             <button>
               {" "}
-              <CiShoppingCart size={25} />
+              <Link to={"/cart"}>
+                {" "}
+                <CiShoppingCart size={25} />
+              </Link>
             </button>
 
             <button>

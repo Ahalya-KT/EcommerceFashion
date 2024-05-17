@@ -5,8 +5,11 @@ import { CiShoppingCart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { RiStarSFill } from "react-icons/ri";
 import { RiStarSLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Redux/Slice/cartSlice";
 
 function ProductDetails() {
+  const dispatch = useDispatch();
   const ReviewDetails = [
     {
       img: "",
@@ -86,8 +89,22 @@ function ProductDetails() {
             <p>Tags:Modern,Design,cotton</p>
           </div>
 
-          <button className="bg-blue-900 p-3 text-white font-semibold text-xs">
-            <Link to={"/Cart"}> ADD TO CART</Link>
+          <button
+            className="bg-blue-900 p-3 text-white font-semibold text-xs"
+            onClick={() =>
+              dispatch(
+                addToCart([
+                  {
+                    product: "shortTop",
+                    price: 999,
+                    quantity: 1,
+                    total: 999,
+                  },
+                ])
+              )
+            }
+          >
+            ADD TO CART
           </button>
         </div>
       </div>

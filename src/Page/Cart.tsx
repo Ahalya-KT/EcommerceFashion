@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { RootState } from "../Redux/store";
 
 const TABLE_HEAD = ["", "Product", "Price", "Quantity", "Total"];
 
@@ -18,6 +20,7 @@ const TABLE_ROWS = [
 ];
 
 function Cart() {
+  const { cart } = useSelector((state: RootState) => state.cart);
   return (
     <div>
       <div className="py-52">
@@ -36,22 +39,23 @@ function Cart() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(({ Product, price, Quantity, Total }, index) => {
-              const isLast = index === TABLE_ROWS.length - 1;
-              const classes = isLast
-                ? "p-4"
-                : "p-4 border-b border-blue-gray-50";
+            {cart &&
+              cart?.map(({ product, price, quantity, total }, index) => {
+                const isLast = index === cart.length - 1;
+                const classes = isLast
+                  ? "p-4"
+                  : "p-4 border-b border-blue-gray-50";
 
-              return (
-                <tr key={Product}>
-                  <td className={classes}></td>
-                  <td className={classes}>{Product}</td>
-                  <td className={classes}>{price}</td>
-                  <td className={classes}>{Quantity}</td>
-                  <td className={classes}>{Total}</td>
-                </tr>
-              );
-            })}
+                return (
+                  <tr key={product}>
+                    <td className={classes}></td>
+                    <td className={classes}>{product}</td>
+                    <td className={classes}>{price}</td>
+                    <td className={classes}>{quantity}</td>
+                    <td className={classes}>{total}</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
 

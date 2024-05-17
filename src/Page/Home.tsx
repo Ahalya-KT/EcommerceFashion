@@ -40,9 +40,9 @@ const Home = () => {
       <Cards />
 
       {/* testing email */}
-      <div>
+      {/* <div>
         <p>{user?.email}</p>
-      </div>
+      </div> */}
 
       {/* section4 */}
 

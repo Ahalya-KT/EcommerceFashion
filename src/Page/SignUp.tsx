@@ -2,13 +2,23 @@ import { Checkbox } from "@material-tailwind/react";
 import imgSrc from "../images/pic1.jpg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../Redux/Slice/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../Redux/store";
+import { useEffect } from "react";
 
 const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // to avoid the navigation to login page
+  const { user } = useSelector((state: RootState) => state.user);
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
 
   const SignSchema = Yup.object().shape({
     name: Yup.string()
