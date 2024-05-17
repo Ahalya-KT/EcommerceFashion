@@ -4,21 +4,6 @@ import { RootState } from "../Redux/store";
 
 const TABLE_HEAD = ["", "Product", "Price", "Quantity", "Total"];
 
-const TABLE_ROWS = [
-  {
-    Product: "Plain White Shirt",
-    price: "2500",
-    Quantity: "1",
-    Total: "2500",
-  },
-  {
-    Product: "Plain White Shirt",
-    price: "2500",
-    Quantity: "1",
-    Total: "2500",
-  },
-];
-
 function Cart() {
   const { cart } = useSelector((state: RootState) => state.cart);
   return (

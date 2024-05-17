@@ -6,13 +6,9 @@ import { MdOutlineSupport } from "react-icons/md";
 import { TbBrandDaysCounter } from "react-icons/tb";
 import { FaFingerprint } from "react-icons/fa";
 import BuyNow from "./BuyNow";
-import { useSelector } from "react-redux";
-import { RootState } from "../Redux/store";
 // import Counter from "../component/Counter";
 
 const Home = () => {
-  const { user } = useSelector((state: RootState) => state.user);
-
   return (
     <div>
       <div className="bg-white py-10">
