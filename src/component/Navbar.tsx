@@ -6,12 +6,11 @@ import logo from "../images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Redux/store";
 import { logout } from "../Redux/Slice/UserSlice";
-import { CiShoppingCart } from "react-icons/ci";
-import { CiHeart } from "react-icons/ci";
 import { RiLogoutCircleRLine } from "react-icons/ri";
-import { CiHome } from "react-icons/ci";
-
-import { IoPersonOutline } from "react-icons/io5";
+import { IoMdHome } from "react-icons/io";
+import { FaShoppingCart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { IoPersonSharp } from "react-icons/io5";
 
 const Navbar = () => {
   let Links = [
@@ -84,7 +83,7 @@ const Navbar = () => {
           <div className="flex gap-5 ">
             <button>
               <Link to={"/"}>
-                <CiHome size={25} />
+                <IoMdHome />
               </Link>
             </button>
 
@@ -92,18 +91,18 @@ const Navbar = () => {
               {" "}
               <Link to={"/cart"}>
                 {" "}
-                <CiShoppingCart size={25} />
+                <FaShoppingCart />
               </Link>
             </button>
 
             <button>
-              <CiHeart size={25} />
+              <FaHeart />
             </button>
 
             <div className="relative">
               <div>
                 <button onClick={handleDropdown}>
-                  <IoPersonOutline size={20} />
+                  <IoPersonSharp />
                 </button>
               </div>
 

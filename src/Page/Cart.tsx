@@ -6,6 +6,8 @@ const TABLE_HEAD = ["", "Product", "Price", "Quantity", "Total"];
 
 function Cart() {
   const { cart } = useSelector((state: RootState) => state.cart);
+  console.log(cart, "cart");
+
   return (
     <div>
       <div className="py-52">
@@ -25,19 +27,24 @@ function Cart() {
           </thead>
           <tbody>
             {cart &&
-              cart?.map(({ product, price, quantity, total }, index) => {
+              cart?.map(({ title, price, quantity, img }, index) => {
                 const isLast = index === cart.length - 1;
                 const classes = isLast
                   ? "p-4"
                   : "p-4 border-b border-blue-gray-50";
 
                 return (
-                  <tr key={product}>
+                  <tr key={title}>
                     <td className={classes}></td>
-                    <td className={classes}>{product}</td>
+                    <div className="flex">
+                      <img src={img} alt="no-img" className="w-10 pt-2" />
+
+                      <td className={classes}>{title}</td>
+                    </div>
+
                     <td className={classes}>{price}</td>
                     <td className={classes}>{quantity}</td>
-                    <td className={classes}>{total}</td>
+                    <td className={classes}>{quantity * price}</td>
                   </tr>
                 );
               })}

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import addCart from "../images/Addcart.png";
 import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { Link } from "react-router-dom";
@@ -7,8 +6,18 @@ import { RiStarSFill } from "react-icons/ri";
 import { RiStarSLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Redux/Slice/cartSlice";
+import { useLocation } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 function ProductDetails() {
+  const location = useLocation();
+  // const item = location.state;
+  const item = location.state ? location.state.item : null;
+  console.log(item, "helloooooooooooooooooo");
+
+  // function for toast
+  const addToCartToast = () => toast.success("Added to cart");
+
   const dispatch = useDispatch();
   const ReviewDetails = [
     {
@@ -47,7 +56,7 @@ function ProductDetails() {
       <div className="flex gap-16">
         <div>
           <div className="px-10 py-10 ">
-            <img src={addCart} className="w-96" />
+            <img src={item.img} className="w-96" />
           </div>
         </div>
 
@@ -67,8 +76,12 @@ function ProductDetails() {
             </div>
           </div>
 
-          <p className="text-2xl py-3 font-semibold">plain White Shirt</p>
-          <p className="py-2 text-2xl text-light-blue-900">$59.00</p>
+          <p className="text-2xl py-3 font-semibold">
+            {item && <p>{item.title}</p>}
+          </p>
+          <p className="py-2 text-2xl text-light-blue-900">
+            {item && <p>{item.price}</p>}
+          </p>
           <p className="py-2 text-brown-300">
             A classic t-shirt never goes out of style. This is our most premium
             <br></br>
@@ -91,21 +104,14 @@ function ProductDetails() {
 
           <button
             className="bg-blue-900 p-3 text-white font-semibold text-xs"
-            onClick={() =>
-              dispatch(
-                addToCart([
-                  {
-                    product: "shortTop",
-                    price: 999,
-                    quantity: 1,
-                    total: 999,
-                  },
-                ])
-              )
-            }
+            onClick={() => {
+              dispatch(addToCart({ ...item, quantity: 1 }));
+              addToCartToast();
+            }}
           >
             ADD TO CART
           </button>
+          <Toaster position="bottom-center" reverseOrder={false} />
         </div>
       </div>
       {/* review and decryption start */}

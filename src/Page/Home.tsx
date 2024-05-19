@@ -6,7 +6,6 @@ import { MdOutlineSupport } from "react-icons/md";
 import { TbBrandDaysCounter } from "react-icons/tb";
 import { FaFingerprint } from "react-icons/fa";
 import BuyNow from "./BuyNow";
-// import Counter from "../component/Counter";
 
 const Home = () => {
   return (

@@ -9,7 +9,7 @@ const BuyNow = () => {
           A one-stop platform for all your fashion needs, hassle-free. Buy with
           a peace of mind.
         </p>
-        <Link to={"/AddToCart"}>
+        <Link to={"/ProductDetails"}>
           <button className="bg-white  text-black  font-bold py-2 mt-7 px-4 ">
             Shop Now
           </button>
@@ -21,7 +21,7 @@ const BuyNow = () => {
         <p className="leading-tight pt-7 ">
           End of season sale. Buy any 2 items of your choice and get 1 free.
         </p>
-        <Link to={"/AddToCart"}>
+        <Link to={"/ProductDetails"}>
           <button className="bg-white  text-black  font-bold py-2 mt-7 px-4 ">
             Shop Now
           </button>

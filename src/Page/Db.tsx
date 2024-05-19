@@ -9,32 +9,33 @@ const Data = [
   {
     img: img1,
     title: "Plain White Shirt",
-    price: "$29.00",
+    price: "29.00",
+    description: "helooooooooooooooooooooo",
   },
   {
     img: img2,
     title: "Denim Jacket ",
-    price: "$29.00",
+    price: "559.00",
   },
   {
     img: img3,
     title: "Black Polo Shirt",
-    price: "$29.00",
+    price: "9999.00",
   },
   {
     img: img4,
     title: "Blue Sweatshirt",
-    price: "$29.00",
+    price: "999.00",
   },
   {
     img: img5,
     title: "Blue Plain Shirt",
-    price: "$29.00",
+    price: "779.00",
   },
   {
     img: img6,
     title: "Blue Plain Shirt",
-    price: "$29.00",
+    price: "99.00",
   },
 ];
 export default Data;
