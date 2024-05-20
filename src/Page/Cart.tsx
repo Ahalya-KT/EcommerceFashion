@@ -1,13 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../Redux/store";
+import { MdDelete } from "react-icons/md";
+
+import { FaPlus } from "react-icons/fa";
+import { TiMinus } from "react-icons/ti";
+import { deleteCartItem, updateQty } from "../Redux/Slice/cartSlice";
 
 const TABLE_HEAD = ["", "Product", "Price", "Quantity", "Total"];
 
 function Cart() {
   const { cart } = useSelector((state: RootState) => state.cart);
   console.log(cart, "cart");
-
+  const dispatch = useDispatch();
   return (
     <div>
       <div className="py-52">
@@ -31,7 +36,7 @@ function Cart() {
                 const isLast = index === cart.length - 1;
                 const classes = isLast
                   ? "p-4"
-                  : "p-4 border-b border-blue-gray-50";
+                  : "p-2 border-b border-blue-gray-50";
 
                 return (
                   <tr key={title}>
@@ -43,8 +48,35 @@ function Cart() {
                     </div>
 
                     <td className={classes}>{price}</td>
-                    <td className={classes}>{quantity}</td>
-                    <td className={classes}>{quantity * price}</td>
+                    <td className={classes}>
+                      <div className="flex gap-3 border w-20 p-2 rounded-lg items-center">
+                        <button
+                          onClick={() =>
+                            dispatch(updateQty({ type: "decr", index }))
+                          }
+                        >
+                          <TiMinus size={10} />
+                        </button>
+
+                        {quantity}
+
+                        <button
+                          onClick={() =>
+                            dispatch(updateQty({ type: "inc", index }))
+                          }
+                        >
+                          <FaPlus size={10} />
+                        </button>
+                      </div>
+                    </td>
+                    <div className="flex gap-6">
+                      <td className={classes}>{quantity * price}</td>
+                      <td className={classes}>
+                        <button onClick={() => dispatch(deleteCartItem(index))}>
+                          <MdDelete />
+                        </button>
+                      </td>
+                    </div>
                   </tr>
                 );
               })}

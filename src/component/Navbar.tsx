@@ -96,7 +96,9 @@ const Navbar = () => {
             </button>
 
             <button>
-              <FaHeart />
+              <Link to={"/Wishlist"}>
+                <FaHeart />
+              </Link>
             </button>
 
             <div className="relative">

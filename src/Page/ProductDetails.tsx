@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
-import { CiShoppingCart } from "react-icons/ci";
-import { Link } from "react-router-dom";
 import { RiStarSFill } from "react-icons/ri";
 import { RiStarSLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../Redux/Slice/cartSlice";
 import { useLocation } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { addToWishList } from "../Redux/Slice/wishListSlice";
 
 function ProductDetails() {
   const location = useLocation();
   // const item = location.state;
   const item = location.state ? location.state.item : null;
-  console.log(item, "helloooooooooooooooooo");
+  console.log(item, "items");
 
   // function for toast
   const addToCartToast = () => toast.success("Added to cart");
+  const wishListToast = () => toast.success("Added to WishList");
 
   const dispatch = useDispatch();
   const ReviewDetails = [
@@ -68,11 +68,15 @@ function ProductDetails() {
             </p>
 
             <div className="flex gap-1">
-              {/* <CiHeart size={25} className="cursor-pointer" /> */}
-              <Link to="/Wishlist">
+              <button
+                onClick={() => {
+                  dispatch(addToWishList(item));
+                  wishListToast();
+                }}
+                className="border border-black p-2 rounded-lg"
+              >
                 <CiHeart size={25} className="cursor-pointer" />
-              </Link>
-              <CiShoppingCart size={25} className="cursor-pointer" />
+              </button>
             </div>
           </div>
 
