@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { RootState } from "../Redux/store";
 
 function OrderHistory() {
   const TABLE_HEAD = ["Product Name", "Price", "Status", "date", "Action"];
@@ -16,6 +18,10 @@ function OrderHistory() {
       date: "2 apr 2023",
     },
   ];
+
+  const { order } = useSelector((state: RootState) => state.order);
+  console.log(order, "ordereditems");
+
   return (
     <div className="py-32 px-16">
       <p className="font-bold text-xl border-b py-3">ORDER HISTORY</p>
@@ -34,27 +40,24 @@ function OrderHistory() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map(({ product, price, status, date }, index) => {
-            const isLast = index === TABLE_ROWS.length - 1;
-            const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
-
-            return (
-              <tr key={product}>
-                <td className={classes}>{product}</td>
-                <td className={classes}>{price}</td>
-                <td className={classes}>
-                  <p className="bg-light-green-400 text-center w-14 rounded-lg text-xs p-1 text-white ">
+          {order.map((items, index) => {
+            return items.product.map((product) => (
+              <tr key={product.title}>
+                <td>{product.title}</td>
+                <td>{product.price}</td>
+                <td>
+                  {/* <p className="bg-light-green-400 text-center w-14 rounded-lg text-xs p-1 text-white ">
                     {status}
-                  </p>
+                  </p> */}
                 </td>
-                <td className={classes}>{date}</td>
-                <td className={classes}>
+                <td>date</td>
+                <td>
                   <Link to={"/orderDetails"}>
                     <p className="cursor-pointer">View Details</p>
                   </Link>
                 </td>
               </tr>
-            );
+            ));
           })}
         </tbody>
       </table>

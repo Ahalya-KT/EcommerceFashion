@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Redux/store";
 import { deleteWishListItem } from "../Redux/Slice/wishListSlice";
 import { FaShoppingCart } from "react-icons/fa";
+import { addToCart } from "../Redux/Slice/cartSlice";
 
 function WishList() {
-  const TABLE_HEAD = ["Product Name", "Price", "Status", "Action"];
+  const TABLE_HEAD = ["Product Name", "Status", "Action"];
   const TABLE_ROWS = [
     {
       product: "Shirt",
@@ -44,36 +45,37 @@ function WishList() {
           </thead>
           <tbody>
             {wistList &&
-              wistList.map(({ title, price, status, img }, index) => {
+              wistList.map((item, index) => {
                 const isLast = index === TABLE_ROWS.length - 1;
-                const classes = isLast
-                  ? "p-4"
-                  : "p-4 border-b border-blue-gray-50";
+                const classes = isLast ? "p-7" : "p-4";
 
                 return (
-                  <tr key={title}>
+                  <tr key={item.title}>
                     <div className="flex">
                       <td className={classes}>
-                        <img src={img} className="w-10" />
+                        <img src={item.img} className="w-10" />
                       </td>
-                      <td className={classes}>{title}</td>
+                      <td className={classes}>{item.title}</td>
                     </div>
 
-                    <td className={classes}>{price}</td>
-                    <td className={classes}>{status}</td>
-                    <div className="flex gap-4">
-                      <td className={classes}>
-                        <button
-                          onClick={() => dispatch(deleteWishListItem(index))}
-                        >
-                          <MdDelete className="cursor-pointer" />
-                        </button>
+                    {/* <td className={classes}>{item.price}</td> */}
+                    <td className={classes}>{item.status}</td>
 
-                        <button>
-                          <FaShoppingCart />
-                        </button>
-                      </td>
-                    </div>
+                    <td className="flex gap-5 pb-5">
+                      <button
+                        onClick={() => dispatch(deleteWishListItem(index))}
+                      >
+                        <MdDelete className="cursor-pointer" size={20} />
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          dispatch(addToCart({ ...item, quantity: 1 }))
+                        }
+                      >
+                        <FaShoppingCart className="cursor-pointer" size={20} />
+                      </button>
+                    </td>
                   </tr>
                 );
               })}

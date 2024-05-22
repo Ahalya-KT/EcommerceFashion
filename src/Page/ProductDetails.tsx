@@ -150,7 +150,6 @@ function ProductDetails() {
               </p>
 
               <p>
-                {" "}
                 Users with access to the Internet can use many digital mediums,
                 such as Facebook, YouTube, Forums, and Email etc. Through
                 Digital communications it creates a Multi-communication channel

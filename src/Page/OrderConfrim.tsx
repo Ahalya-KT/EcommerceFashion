@@ -34,7 +34,9 @@ function OrderConfrim() {
           <p>May5</p>
 
           <div className="bg-light-green-600 my-8 text-white p-2 font-semibold">
-            <button>Continue Shopping</button>
+            <button>
+              <Link to={"/orderHistory"}>Continue Shopping</Link>
+            </button>
           </div>
         </div>
       </div>

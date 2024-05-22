@@ -3,6 +3,8 @@ import { GiBoxUnpacking } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { Radio } from "@material-tailwind/react";
+import { useSelector } from "react-redux";
+import { RootState } from "../Redux/store";
 
 function OrderDetails() {
   const TABLE_HEAD = ["items", "quantity", "rate", "price"];
@@ -20,6 +22,8 @@ function OrderDetails() {
       rate: "408",
     },
   ];
+  // taking data from the checkout
+  const { order } = useSelector((state: RootState) => state.order);
 
   return (
     <div className="py-40 px-16">
@@ -120,35 +124,35 @@ function OrderDetails() {
       </table>
 
       {/* address */}
-      <div className="py-9 flex w-full px-32">
-        <div className="w-1/4">
-          <p className="text-xl font-bold py-5">Billing Address</p>
-          <p className="text-gray-700">Address 1</p>
-          <p className="text-gray-700">Address 2</p>
-          <p className="text-gray-700">Street</p>
-          <p className="text-gray-700">City</p>
-          <p className="text-gray-700">Pin-code</p>
-        </div>
+      {order.map((items) => (
+        <div className="py-9 flex w-full px-32">
+          <div className="w-1/4">
+            <p className="text-xl font-bold py-5">Billing Address</p>
+            <p className="text-gray-700">{items.address}</p>
+            <p className="text-gray-700">{items.city}</p>
+            <p className="text-gray-700">{items.state}</p>
+            <p className="text-gray-700">{items.zip}</p>
+          </div>
 
-        <div className="w-1/4">
-          <p className="text-xl font-bold py-5">Shipping Address</p>
-          <p className="text-gray-700">Address 1</p>
-          <p className="text-gray-700">Address 2</p>
-          <p className="text-gray-700">Street</p>
-          <p className="text-gray-700">City</p>
-          <p className="text-gray-700">Pin-code</p>
-        </div>
+          <div className="w-1/4">
+            <p className="text-xl font-bold py-5">Shipping Address</p>
+            <p className="text-gray-700">{items.address}</p>
+            <p className="text-gray-700">{items.city}</p>
+            <p className="text-gray-700">{items.state}</p>
+            <p className="text-gray-700">{items.zip}</p>
+          </div>
 
-        <div className="w-1/4">
-          <p className="text-xl font-bold py-5">Notes</p>
-          <p className="text-gray-700">hello type something</p>
-        </div>
+          <div className="w-1/4">
+            <p className="text-xl font-bold py-5">Notes</p>
+            <p className="text-gray-700">hello type something</p>
+          </div>
 
-        <div className="w-1/4">
-          <p className="text-xl font-bold py-5">Notes</p>
-          <p className="text-gray-700">hello type something</p>
+          <div className="w-1/4">
+            <p className="text-xl font-bold py-5">Notes</p>
+            <p className="text-gray-700">hello type something</p>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }

@@ -13,6 +13,17 @@ function Cart() {
   const { cart } = useSelector((state: RootState) => state.cart);
   console.log(cart, "cart");
   const dispatch = useDispatch();
+
+  // to get Total
+  const cartTotal = () => {
+    let grandTotal = 0;
+    cart.map((item) => {
+      let total = item.quantity * item.price;
+      grandTotal += total;
+    });
+    return grandTotal;
+  };
+
   return (
     <div>
       <div className="py-52">
@@ -90,7 +101,7 @@ function Cart() {
           <div className="w-96 px-14  flex flex-col gap-7">
             <div className="flex justify-between border-b border-blue-gray p-3">
               <p>Subtotal</p>
-              <p>$59.00</p>
+              <p>{cartTotal()}</p>
             </div>
 
             <div className="flex justify-between border-b border-blue-gray p-3">
@@ -100,7 +111,7 @@ function Cart() {
 
             <div className="flex justify-between">
               <p className="font-semibold">Total</p>
-              <p>$59.00</p>
+              <p>{cartTotal()}</p>
             </div>
           </div>
         </div>
