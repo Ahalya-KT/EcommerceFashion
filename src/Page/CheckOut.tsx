@@ -1,6 +1,6 @@
 import { Radio } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { PlaceOrder } from "../Redux/Slice/orderSlice";
@@ -34,15 +34,13 @@ function CheckOut() {
     return grandTotal;
   };
 
-  const checkoutList = [
-    {
-      img: "",
-      productName: "Speaker",
-      SubTotal: "$2334",
-      Total: "$2334",
-      Discount: "0%",
-    },
-  ];
+  const calculateDeliveryDate = () => {
+    let currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + 7);
+    let formattedDate = currentDate.toDateString();
+    return formattedDate;
+  };
+
   return (
     <div className="py-36 px-20 bg-">
       <div className="grid grid-cols-2 gap-10">
@@ -62,7 +60,14 @@ function CheckOut() {
             }}
             validationSchema={DeliverySchema}
             onSubmit={(values) => {
-              dispatch(PlaceOrder({ ...values, product: cart }));
+              dispatch(
+                PlaceOrder({
+                  ...values,
+                  product: cart,
+                  deliveryDate: calculateDeliveryDate(),
+                  status: "pending",
+                })
+              );
               navigate("/orderConfrim");
               console.log(values, "placeOrder");
             }}

@@ -10,7 +10,7 @@ export interface orderState {
     zip: number;
     address: string;
     status: string;
-    DeliveryDate: number;
+    deliveryDate: number;
 
     product: [
       {

@@ -1,23 +1,16 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { RootState } from "../Redux/store";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 function OrderHistory() {
   const TABLE_HEAD = ["Product Name", "Price", "Status", "date", "Action"];
-  const TABLE_ROWS = [
-    {
-      product: "Shirt",
-      price: "408",
-      status: "pending",
-      date: "2 apr 2023",
-    },
-    {
-      product: "Bag set",
-      price: "2300",
-      status: "pending",
-      date: "2 apr 2023",
-    },
-  ];
+
+  const navigate = useNavigate();
+  // function to navigate to another page
+  const ViewProduct = (order: any) => {
+    navigate("/orderDetails", { state: { order } });
+  };
 
   const { order } = useSelector((state: RootState) => state.order);
   console.log(order, "ordereditems");
@@ -40,21 +33,24 @@ function OrderHistory() {
           </tr>
         </thead>
         <tbody>
-          {order.map((items, index) => {
+          {order.map((items) => {
             return items.product.map((product) => (
               <tr key={product.title}>
                 <td>{product.title}</td>
                 <td>{product.price}</td>
                 <td>
-                  {/* <p className="bg-light-green-400 text-center w-14 rounded-lg text-xs p-1 text-white ">
-                    {status}
-                  </p> */}
+                  <p className="bg-light-green-400 text-center w-14 rounded-lg text-xs p-1 text-white ">
+                    {items.status}
+                  </p>
                 </td>
-                <td>date</td>
+                <td> {items.deliveryDate}</td>
                 <td>
-                  <Link to={"/orderDetails"}>
-                    <p className="cursor-pointer">View Details</p>
-                  </Link>
+                  <div className="flex gap" onClick={() => ViewProduct(items)}>
+                    <p className="cursor-pointer text-light-blue-900">
+                      View Details
+                    </p>
+                    <FaArrowRightLong className="mt-1" />
+                  </div>
                 </td>
               </tr>
             ));

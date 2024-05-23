@@ -3,11 +3,10 @@ import { GiBoxUnpacking } from "react-icons/gi";
 import { FaShippingFast } from "react-icons/fa";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { Radio } from "@material-tailwind/react";
-import { useSelector } from "react-redux";
-import { RootState } from "../Redux/store";
+import { useLocation } from "react-router-dom";
 
 function OrderDetails() {
-  const TABLE_HEAD = ["items", "quantity", "rate", "price"];
+  const TABLE_HEAD = ["Items", "quantity", "price"];
   const TABLE_ROWS = [
     {
       items: "Shirt",
@@ -23,7 +22,9 @@ function OrderDetails() {
     },
   ];
   // taking data from the checkout
-  const { order } = useSelector((state: RootState) => state.order);
+  const location = useLocation();
+  const order = location.state ? location.state.order : null;
+  console.log(order, "itemmmmmmssssssssssssssssss");
 
   return (
     <div className="py-40 px-16">
@@ -107,16 +108,15 @@ function OrderDetails() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map(({ items, price, rate, quantity }, index) => {
+          {order?.product?.map((products: any, index: number) => {
             const isLast = index === TABLE_ROWS.length - 1;
             const classes = isLast ? "p-4" : "p-4 ";
 
             return (
-              <tr key={items} className="text-gray-600">
-                <td className={classes}>{items}</td>
-                <td className={classes}>{price}</td>
-                <td className={classes}>{rate}</td>
-                <td className={classes}>{quantity}</td>
+              <tr key={products} className="text-gray-600">
+                <td className={classes}>{products?.title}</td>
+                <td className={classes}>{products?.quantity}</td>
+                <td className={classes}>{products?.price}</td>
               </tr>
             );
           })}
@@ -124,35 +124,34 @@ function OrderDetails() {
       </table>
 
       {/* address */}
-      {order.map((items) => (
-        <div className="py-9 flex w-full px-32">
-          <div className="w-1/4">
-            <p className="text-xl font-bold py-5">Billing Address</p>
-            <p className="text-gray-700">{items.address}</p>
-            <p className="text-gray-700">{items.city}</p>
-            <p className="text-gray-700">{items.state}</p>
-            <p className="text-gray-700">{items.zip}</p>
-          </div>
 
-          <div className="w-1/4">
-            <p className="text-xl font-bold py-5">Shipping Address</p>
-            <p className="text-gray-700">{items.address}</p>
-            <p className="text-gray-700">{items.city}</p>
-            <p className="text-gray-700">{items.state}</p>
-            <p className="text-gray-700">{items.zip}</p>
-          </div>
-
-          <div className="w-1/4">
-            <p className="text-xl font-bold py-5">Notes</p>
-            <p className="text-gray-700">hello type something</p>
-          </div>
-
-          <div className="w-1/4">
-            <p className="text-xl font-bold py-5">Notes</p>
-            <p className="text-gray-700">hello type something</p>
-          </div>
+      <div className="py-9 flex w-full px-32">
+        <div className="w-1/4">
+          <p className="text-xl font-bold py-5">Billing Address</p>
+          <p className="text-gray-700">{order.address}</p>
+          <p className="text-gray-700">{order.city}</p>
+          <p className="text-gray-700">{order.state}</p>
+          <p className="text-gray-700">{order.zip}</p>
         </div>
-      ))}
+
+        <div className="w-1/4">
+          <p className="text-xl font-bold py-5">Shipping Address</p>
+          <p className="text-gray-700">{order.address}</p>
+          <p className="text-gray-700">{order.city}</p>
+          <p className="text-gray-700">{order.state}</p>
+          <p className="text-gray-700">{order.zip}</p>
+        </div>
+
+        <div className="w-1/4">
+          <p className="text-xl font-bold py-5">Notes</p>
+          <p className="text-gray-700">hello type something</p>
+        </div>
+
+        <div className="w-1/4">
+          <p className="text-xl font-bold py-5">Notes</p>
+          <p className="text-gray-700">hello type something</p>
+        </div>
+      </div>
     </div>
   );
 }
