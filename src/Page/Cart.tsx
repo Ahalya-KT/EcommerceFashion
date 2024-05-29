@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { RootState } from "../Redux/store";
 import { MdDelete } from "react-icons/md";
 
@@ -13,7 +12,6 @@ function Cart() {
   const { cart } = useSelector((state: RootState) => state.cart);
   console.log(cart, "cart");
   const dispatch = useDispatch();
-
   // to get Total
   const cartTotal = () => {
     let grandTotal = 0;
@@ -54,7 +52,6 @@ function Cart() {
                     <td className={classes}></td>
                     <div className="flex">
                       <img src={img} alt="no-img" className="w-10 pt-2" />
-
                       <td className={classes}>{title}</td>
                     </div>
 
@@ -115,8 +112,9 @@ function Cart() {
             </div>
           </div>
         </div>
-        <button className=" text-xs bg-orange-800 text-white p-3 my-14 mx-10">
-          <Link to="/checkout">PROCEED TO CHECKOUT</Link>
+
+        <button className="text-xs bg-orange-800 text-white p-3 my-14 mx-10">
+          PROCEED TO CHECKOUT
         </button>
       </div>
     </div>

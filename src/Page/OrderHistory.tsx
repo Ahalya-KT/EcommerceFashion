@@ -45,7 +45,10 @@ function OrderHistory() {
                 </td>
                 <td> {items.deliveryDate}</td>
                 <td>
-                  <div className="flex gap" onClick={() => ViewProduct(items)}>
+                  <div
+                    className="flex gap-3"
+                    onClick={() => ViewProduct(items)}
+                  >
                     <p className="cursor-pointer text-light-blue-900">
                       View Details
                     </p>

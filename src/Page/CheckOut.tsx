@@ -163,10 +163,15 @@ function CheckOut() {
                       </div>
                       <div>
                         <Field
-                          name="state"
-                          type="text"
-                          className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
-                        />
+                          id="dropdown"
+                          name="options"
+                          as="Select"
+                          className="p-3 text-sm w-60"
+                        >
+                          <option value="option1">Kerala</option>
+                          <option value="option2">India</option>
+                          <option value="option3">India</option>
+                        </Field>
                         <ErrorMessage
                           name="state"
                           className="text-red-500 text-sm"
@@ -175,15 +180,15 @@ function CheckOut() {
                       </div>
                     </div>
 
-                    <div>
-                      <div className="mt-2">
+                    <div className="">
+                      <div className="">
                         <label className="text-xs">ZIP</label>
                       </div>
                       <div>
                         <Field
                           name="zip"
                           type="text"
-                          className="border-solid border-2 border-gray-300 mt-3 p-2 w-32"
+                          className="border-solid border-2 border-gray-300 mt-2 p-2 w-32"
                         />
                         <ErrorMessage
                           name="zip"
@@ -199,10 +204,15 @@ function CheckOut() {
                       </div>
                       <div>
                         <Field
-                          name="country"
-                          type="text"
-                          className="border-solid border-2 border-gray-300 mt-3 p-2 w-32"
-                        />
+                          id="dropdown"
+                          name="options"
+                          as="Select"
+                          className="p-3 text-sm w-32"
+                        >
+                          <option value="option1">India</option>
+                          <option value="option2">India</option>
+                          <option value="option3">India</option>
+                        </Field>
                         <ErrorMessage
                           name="country"
                           className="text-red-500 text-sm"

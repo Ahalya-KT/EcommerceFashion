@@ -22,7 +22,7 @@ function OrderConfrim() {
           <div className="py-6">
             <p>Order ID</p>
             <div className="flex items-center justify-center text-center gap-1 text-light-blue-800">
-              <Link to={"/orderDetails"}>
+              <Link to={"/orderHistory"}>
                 <p className="cursor-pointer">View Details</p>
               </Link>
 
@@ -35,7 +35,7 @@ function OrderConfrim() {
 
           <div className="bg-light-green-600 my-8 text-white p-2 font-semibold">
             <button>
-              <Link to={"/orderHistory"}>Continue Shopping</Link>
+              <Link to={"/"}>Continue Shopping</Link>
             </button>
           </div>
         </div>
