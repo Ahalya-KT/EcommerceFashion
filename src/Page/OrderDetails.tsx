@@ -4,6 +4,8 @@ import { FaShippingFast } from "react-icons/fa";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { Radio } from "@material-tailwind/react";
 import { useLocation } from "react-router-dom";
+import { RootState } from "../Redux/store";
+import { useSelector } from "react-redux";
 
 function OrderDetails() {
   const TABLE_HEAD = ["Items", "quantity", "price"];
@@ -23,8 +25,19 @@ function OrderDetails() {
   ];
   // taking data from the checkout
   const location = useLocation();
+  const { cart } = useSelector((state: RootState) => state.cart);
   const order = location.state ? location.state.order : null;
   console.log(order, "itemmmmmmssssssssssssssssss");
+  console.log(cart, "cartItems");
+
+  const TotalCart = () => {
+    let grandTotal = 0;
+    cart.map((item) => {
+      let total = item.quantity * item.price;
+      grandTotal += total;
+    });
+    return grandTotal;
+  };
 
   return (
     <div className="py-40 px-16">
@@ -87,7 +100,7 @@ function OrderDetails() {
         </div>
 
         <div>
-          <p className="font-bold text-black text-2xl">$56673</p>
+          <p className="font-bold text-black text-2xl">&{TotalCart()}</p>
         </div>
       </div>
 

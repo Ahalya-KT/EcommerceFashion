@@ -14,9 +14,9 @@ function CheckOut() {
     name: Yup.string().required("name is required"),
     mobile: Yup.string().required("Phone number is required"),
     email: Yup.string().email("Invalid email").required(" email is Required"),
-    state: Yup.string().required("state is required"),
-    city: Yup.string().required("city is required"),
-    country: Yup.string().required("country is required"),
+    // state: Yup.string().required("state is required"),
+    // city: Yup.string().required("city is required"),
+    // country: Yup.string().required("country is required"),
     address: Yup.string()
       .min(10, "Address must be at least 10 characters")
       .required("Address is required"),
@@ -172,11 +172,11 @@ function CheckOut() {
                           <option value="option2">India</option>
                           <option value="option3">India</option>
                         </Field>
-                        <ErrorMessage
+                        {/* <ErrorMessage
                           name="state"
                           className="text-red-500 text-sm"
                           component="p"
-                        />
+                        /> */}
                       </div>
                     </div>
 
@@ -213,11 +213,11 @@ function CheckOut() {
                           <option value="option2">India</option>
                           <option value="option3">India</option>
                         </Field>
-                        <ErrorMessage
+                        {/* <ErrorMessage
                           name="country"
                           className="text-red-500 text-sm"
                           component="p"
-                        />
+                        /> */}
                       </div>
                     </div>
                   </div>
@@ -235,11 +235,11 @@ function CheckOut() {
                           className="border-solid border-2 border-gray-300 mt-3 p-2 w-full"
                         />
                       </div>
-                      <ErrorMessage
+                      {/* <ErrorMessage
                         name="address"
                         className="text-red-500 text-sm"
                         component="p"
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>

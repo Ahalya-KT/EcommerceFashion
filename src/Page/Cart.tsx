@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { TiMinus } from "react-icons/ti";
 import { deleteCartItem, updateQty } from "../Redux/Slice/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const TABLE_HEAD = ["", "Product", "Price", "Quantity", "Total"];
 
@@ -20,6 +21,14 @@ function Cart() {
       grandTotal += total;
     });
     return grandTotal;
+  };
+
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    if (cart.length > 0) {
+      navigate("/checkout");
+    }
   };
 
   return (
@@ -112,10 +121,14 @@ function Cart() {
             </div>
           </div>
         </div>
-
-        <button className="text-xs bg-orange-800 text-white p-3 my-14 mx-10">
-          PROCEED TO CHECKOUT
-        </button>
+        {cart.length > 0 && (
+          <button
+            className="text-xs bg-orange-800 text-white p-3 my-14 mx-10"
+            onClick={handleCheckout}
+          >
+            PROCEED TO CHECKOUT
+          </button>
+        )}
       </div>
     </div>
   );
