@@ -51,25 +51,29 @@ const SearchInput: React.FC<SearchInputProps> = ({
   }, []);
 
   return (
-    <div ref={inputRef} className="flex flex-col">
+    <div ref={inputRef} className="flex flex-col ">
       <label className="text-xs">{title}</label>
-      <input
-        type="text"
-        placeholder={placeholder}
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onFocus={() => setListVisibility(true)}
-        className="p-2 my-3"
-      />
-      {isListVisible && (
-        <ul>
-          {filteredCountries.map((item) => (
-            <li key={item.name} onClick={() => handleSelect(item)}>
-              {item.name}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="relative">
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onFocus={() => setListVisibility(true)}
+          className="p-2 my-3"
+        />
+      </div>
+      <div className="absolute py-20 bg-white flex flex-col justify-center text-center z-10  cursor-pointer">
+        {isListVisible && (
+          <ul>
+            {filteredCountries.map((item) => (
+              <li key={item.name} onClick={() => handleSelect(item)}>
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
