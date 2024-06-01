@@ -5,7 +5,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 function Footer() {
   return (
     <div className="">
-      <div className="flex w-full  justify-center py-12  bg-blue-gray-50 ">
+      <div className="flex flex-col md:flex-row   w-full  justify-center items-center py-12  bg-blue-gray-50 ">
         <div className="w-72">
           <p className="text-xs font-semibold">COMPANY INFO</p>
           <div className="py-8 text-sm">
@@ -45,7 +45,7 @@ function Footer() {
       </div>
 
       {/* last section */}
-      <div className="flex justify-between bg-blue-gray-50 px-28 text-xs py-8">
+      <div className="flex justify-between md:flex-col bg-blue-gray-50 px-28 text-xs py-8">
         <div>
           <p>© 2020 NorthStar eCommerce</p>
           <p>Privacy Policy Terms & Conditions</p>

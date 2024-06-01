@@ -5,6 +5,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { PlaceOrder } from "../Redux/Slice/orderSlice";
 import { RootState } from "../Redux/store";
+import { useState } from "react";
+import { Country, State, City, IState, ICity } from "country-state-city";
+import SearchInput from "./SearchInput";
 
 function CheckOut() {
   const dispatch = useDispatch();
@@ -14,9 +17,6 @@ function CheckOut() {
     name: Yup.string().required("name is required"),
     mobile: Yup.string().required("Phone number is required"),
     email: Yup.string().email("Invalid email").required(" email is Required"),
-    // state: Yup.string().required("state is required"),
-    // city: Yup.string().required("city is required"),
-    // country: Yup.string().required("country is required"),
     address: Yup.string()
       .min(10, "Address must be at least 10 characters")
       .required("Address is required"),
@@ -24,7 +24,6 @@ function CheckOut() {
   });
 
   const { cart } = useSelector((state: RootState) => state.cart);
-
   const cartTotal = () => {
     let grandTotal = 0;
     cart.map((item) => {
@@ -33,12 +32,25 @@ function CheckOut() {
     });
     return grandTotal;
   };
+  const countries = Country.getAllCountries();
+  let [states, setStates] = useState<IState[]>();
+  let [cities, setCities] = useState<ICity[]>();
 
   const calculateDeliveryDate = () => {
     let currentDate = new Date();
     currentDate.setDate(currentDate.getDate() + 7);
     let formattedDate = currentDate.toDateString();
     return formattedDate;
+  };
+
+  const handleCountrySelect = (country: any) => {
+    const states = State.getStatesOfCountry(country.isoCode);
+    setStates(states);
+  };
+
+  const handleSelectState = (state: any) => {
+    const cities = City.getCitiesOfState(state.countryCode, state.isoCode);
+    setCities(cities);
   };
 
   return (
@@ -72,209 +84,188 @@ function CheckOut() {
               console.log(values, "placeOrder");
             }}
           >
-            <Form>
-              <div className="flex gap-9">
-                <div className="bg-blue-gray-50 p-5 my-6 rounded-lg">
-                  <div className="flex gap-7">
-                    <div>
-                      <div className="mt-2">
-                        <label className="text-xs">Name</label>
-                      </div>
+            {({ setFieldValue }) => (
+              <Form>
+                <div className="flex gap-9">
+                  <div className="bg-blue-gray-50 p-5 my-6 rounded-lg">
+                    <div className="flex gap-7">
                       <div>
-                        <Field
-                          name="name"
-                          type="text"
-                          className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
-                        />
-                        <ErrorMessage
-                          name="name"
-                          className="text-red-500 text-sm"
-                          component="p"
-                        />
+                        <div className="mt-2">
+                          <label className="text-xs">Name</label>
+                        </div>
+                        <div>
+                          <Field
+                            name="name"
+                            type="text"
+                            className=" mt-3 p-2 w-72"
+                          />
+                          <ErrorMessage
+                            name="name"
+                            className="text-red-500 text-sm"
+                            component="p"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="mt-2">
+                          <label className="text-xs">Mobile Number</label>
+                        </div>
+                        <div>
+                          <Field
+                            name="mobile"
+                            type="text"
+                            className=" mt-3 p-2 w-72"
+                          />
+                          <ErrorMessage
+                            name="mobile"
+                            className="text-red-500 text-sm"
+                            component="p"
+                          />
+                        </div>
                       </div>
                     </div>
 
-                    <div>
-                      <div className="mt-2">
-                        <label className="text-xs">Mobile Number</label>
-                      </div>
+                    {/* set2 */}
+                    <div className="flex gap-7">
                       <div>
-                        <Field
-                          name="mobile"
-                          type="text"
-                          className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
-                        />
-                        <ErrorMessage
-                          name="mobile"
-                          className="text-red-500 text-sm"
-                          component="p"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                        <div className="mt-2">
+                          <label className="text-xs">Email</label>
+                        </div>
+                        <div>
+                          <Field
+                            name="email"
+                            type="text"
+                            className=" mt-3 p-2 w-72"
+                          />
 
-                  {/* set2 */}
-                  <div className="flex gap-7">
-                    <div>
-                      <div className="mt-2">
-                        <label className="text-xs">Email</label>
+                          <ErrorMessage
+                            name="email"
+                            className="text-red-500 text-sm"
+                            component="p"
+                          />
+                        </div>
                       </div>
+
                       <div>
-                        <Field
-                          name="email"
-                          type="text"
-                          className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
-                        />
-
-                        <ErrorMessage
-                          name="email"
-                          className="text-red-500 text-sm"
-                          component="p"
-                        />
+                        <div className="mt-2"></div>
+                        <div>
+                          {/* country */}
+                          <SearchInput
+                            onInput={setFieldValue}
+                            // onInput={handleInput}
+                            onSelect={handleCountrySelect}
+                            data={countries}
+                            title={"Country"}
+                            placeholder={"Select your country"}
+                            name={"country"}
+                          />
+                        </div>
                       </div>
                     </div>
 
-                    <div>
-                      <div className="mt-2">
-                        <label className="text-xs">City</label>
-                      </div>
+                    {/* set3 */}
+
+                    <div className="flex gap-7">
                       <div>
-                        <Field
-                          name="city"
-                          type="text"
-                          className="border-solid border-2 border-gray-300 mt-3 p-2 w-72"
-                        />
-
-                        <ErrorMessage
-                          name="city"
-                          className="text-red-500 text-sm"
-                          component="p"
-                        />
+                        <div className="mt-2">
+                          <SearchInput
+                            onInput={setFieldValue}
+                            onSelect={handleSelectState}
+                            // data={states}
+                            data={states || []}
+                            title={"State/Region"}
+                            placeholder={"Select your state"}
+                            name={"regionState"}
+                          />
+                        </div>
+                        <div></div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* set3 */}
-
-                  <div className="flex gap-7">
-                    <div>
-                      <div className="mt-2">
-                        <label className="text-xs">State</label>
-                      </div>
-                      <div>
-                        <Field
-                          id="dropdown"
-                          name="options"
-                          as="Select"
-                          className="p-3 text-sm w-60"
-                        >
-                          <option value="option1">Kerala</option>
-                          <option value="option2">India</option>
-                          <option value="option3">India</option>
-                        </Field>
-                        {/* <ErrorMessage
-                          name="state"
-                          className="text-red-500 text-sm"
-                          component="p"
-                        /> */}
-                      </div>
-                    </div>
-
-                    <div className="">
                       <div className="">
-                        <label className="text-xs">ZIP</label>
+                        <div className="">
+                          <label className="text-xs">ZIP</label>
+                        </div>
+                        <div>
+                          <Field
+                            name="zip"
+                            type="text"
+                            className=" mt-2 p-2 w-32"
+                          />
+                          <ErrorMessage
+                            name="zip"
+                            className="text-red-500 text-sm"
+                            component="p"
+                          />
+                        </div>
                       </div>
+
                       <div>
-                        <Field
-                          name="zip"
-                          type="text"
-                          className="border-solid border-2 border-gray-300 mt-2 p-2 w-32"
-                        />
-                        <ErrorMessage
-                          name="zip"
-                          className="text-red-500 text-sm"
-                          component="p"
-                        />
+                        <div className="mt-2"></div>
+                        <div>
+                          {/* city */}
+                          <SearchInput
+                            onInput={setFieldValue}
+                            onSelect={() => {}}
+                            data={cities || []}
+                            title={"City"}
+                            placeholder={"Select your City"}
+                            name={"city"}
+                          />
+                        </div>
                       </div>
                     </div>
 
+                    {/* set4 */}
                     <div>
-                      <div className="mt-2">
-                        <label className="text-xs">country</label>
-                      </div>
                       <div>
-                        <Field
-                          id="dropdown"
-                          name="options"
-                          as="Select"
-                          className="p-3 text-sm w-32"
-                        >
-                          <option value="option1">India</option>
-                          <option value="option2">India</option>
-                          <option value="option3">India</option>
-                        </Field>
-                        {/* <ErrorMessage
-                          name="country"
-                          className="text-red-500 text-sm"
-                          component="p"
-                        /> */}
+                        <div className="mt-2">
+                          <label className="text-xs">Address</label>
+                        </div>
+                        <div>
+                          <Field
+                            as="textarea"
+                            name="address"
+                            className=" mt-3 p-2 w-full"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* set4 */}
-                  <div>
-                    <div>
-                      <div className="mt-2">
-                        <label className="text-xs">Address</label>
+                  <div className="">
+                    <p className="font-bold">Order Summary</p>
+                    {/* order summary */}
+                    {cart.map((item) => (
+                      <div className="bg-blue-gray-50 my-6 flex flex-col gap-6 p-5  rounded-lg w-full lg:w-96">
+                        <img src="" />
+                        <p className="text-x1 font-bold">{item.title}</p>
+
+                        <div className=" font-medium">
+                          <p>
+                            SubTotal:{" "}
+                            <span className="ml-2">{cartTotal()}</span>
+                          </p>
+                          <p>
+                            Total: <span className="ml-2">{cartTotal()}</span>
+                          </p>
+                          <p>
+                            Discount:
+                            {/* <span className="ml-2">{items.Discount}</span> */}
+                          </p>
+                        </div>
+                        <p className="font-bold text-xl">Total</p>
+                        <div>
+                          <button className="bg-green-600 p-2 text-white  w-full font-bold">
+                            PLACE ORDER
+                          </button>
+                        </div>
                       </div>
-                      <div>
-                        <Field
-                          as="textarea"
-                          name="address"
-                          className="border-solid border-2 border-gray-300 mt-3 p-2 w-full"
-                        />
-                      </div>
-                      {/* <ErrorMessage
-                        name="address"
-                        className="text-red-500 text-sm"
-                        component="p"
-                      /> */}
-                    </div>
+                    ))}
                   </div>
                 </div>
-
-                <div className="">
-                  <p className="font-bold">Order Summary</p>
-                  {/* order summary */}
-                  {cart.map((item) => (
-                    <div className="bg-blue-gray-50 my-6 flex flex-col gap-6 p-5  rounded-lg w-full lg:w-96">
-                      <img src="" />
-                      <p className="text-x1 font-bold">{item.title}</p>
-
-                      <div className=" font-medium">
-                        <p>
-                          SubTotal: <span className="ml-2">{cartTotal()}</span>
-                        </p>
-                        <p>
-                          Total: <span className="ml-2">{cartTotal()}</span>
-                        </p>
-                        <p>
-                          Discount:
-                          {/* <span className="ml-2">{items.Discount}</span> */}
-                        </p>
-                      </div>
-                      <p className="font-bold text-xl">Total</p>
-                      <div>
-                        <button className="bg-green-600 p-2 text-white  w-full font-bold">
-                          PLACE ORDER
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Form>
+              </Form>
+            )}
           </Formik>
 
           {/* payment mode */}

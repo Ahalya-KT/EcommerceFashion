@@ -1,5 +1,5 @@
 // import React from 'react'
-import imgSrc from "../images/pic1.jpg";
+// import imgSrc from "../images/pic1.jpg";
 import { Checkbox } from "@material-tailwind/react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,8 +27,8 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div className="flex w-screen gap-3">
-      <div className="w-1/2 py-32 px-48">
+    <div className=" flex flex-col justify-center items-center w-screen gap-3">
+      <div className=" py-48 md:px-48">
         <p className="font-bold text-lg text-start">Welcome back!</p>
         <p className="text-start">
           {" "}
@@ -109,13 +109,13 @@ const Login = () => {
         </Formik>
       </div>
 
-      <div className="w-1/2 ">
+      {/* <div className="w-1/2 ">
         <img
           src={imgSrc}
           alt="no-image"
           className="w-full h-full object-cover"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

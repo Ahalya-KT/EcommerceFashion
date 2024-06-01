@@ -138,12 +138,13 @@ function OrderDetails() {
 
       {/* address */}
 
-      <div className="py-9 flex w-full px-32">
+      <div className="py-9 flex gap-12 w-full px-32">
         <div className="w-1/4">
           <p className="text-xl font-bold py-5">Billing Address</p>
           <p className="text-gray-700">{order.address}</p>
           <p className="text-gray-700">{order.city}</p>
-          <p className="text-gray-700">{order.state}</p>
+          <p className="text-gray-700">{order.regionState}</p>
+          <p className="text-gray-700">{order.country}</p>
           <p className="text-gray-700">{order.zip}</p>
         </div>
 
@@ -151,7 +152,8 @@ function OrderDetails() {
           <p className="text-xl font-bold py-5">Shipping Address</p>
           <p className="text-gray-700">{order.address}</p>
           <p className="text-gray-700">{order.city}</p>
-          <p className="text-gray-700">{order.state}</p>
+          <p className="text-gray-700">{order.regionState}</p>
+          <p className="text-gray-700">{order.country}</p>
           <p className="text-gray-700">{order.zip}</p>
         </div>
 
