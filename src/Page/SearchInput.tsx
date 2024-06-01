@@ -63,11 +63,15 @@ const SearchInput: React.FC<SearchInputProps> = ({
           className="p-2 my-3"
         />
       </div>
-      <div className="absolute py-20 bg-white flex flex-col justify-center text-center z-10  cursor-pointer">
+      <div className="absolute   z-10  cursor-pointer  bg-white rounded-lg ">
         {isListVisible && (
-          <ul>
+          <ul className=" ">
             {filteredCountries.map((item) => (
-              <li key={item.name} onClick={() => handleSelect(item)}>
+              <li
+                key={item.name}
+                onClick={() => handleSelect(item)}
+                className="p-3 px-5 hover:bg-blue-gray-100 hover:text-white rounded-lg"
+              >
                 {item.name}
               </li>
             ))}

@@ -234,7 +234,7 @@ function CheckOut() {
                   </div>
 
                   <div className="">
-                    <p className="font-bold">Order Summary</p>
+                    <p className="font-bold text-nowrap">Order Summary</p>
                     {/* order summary */}
                     {cart.map((item) => (
                       <div className="bg-blue-gray-50 my-6 flex flex-col gap-6 p-5  rounded-lg w-full lg:w-96">
