@@ -63,9 +63,9 @@ const SearchInput: React.FC<SearchInputProps> = ({
           className="p-2 my-3"
         />
       </div>
-      <div className="absolute   z-10  cursor-pointer  bg-white rounded-lg ">
+      <div className="absolute   z-10  cursor-pointer  bg-white rounded-lg  ">
         {isListVisible && (
-          <ul className=" ">
+          <ul className=" overflow-scroll h-56 ">
             {filteredCountries.map((item) => (
               <li
                 key={item.name}
